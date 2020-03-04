@@ -12,7 +12,7 @@ linear reflection groups. Code for three examples is included.
 
 ### Usage
 
-In example_tri_grps.py there are examples of how the code is used. The
+In ``example_tri_grps.py`` there are examples of how the code is used. The
 example groups are set at the beginning, then the fundamental domain,
 affine charts and projections are chosen. The script calls functions from
 other scripts to create the tilings. 
@@ -31,7 +31,6 @@ The script triangle_grps.py contains functions which read csv files or take
 in lists and draw tilings. These functions depend on the choice of
 fundamental domain, affine chart, and projection. 
 
-
 ### Install
 
 The developing environment is saved as 
@@ -42,10 +41,10 @@ matrixgroups.yml
 
 and includes:
 
-Python   3.7
-Numpy   1.18.1
-Sympy   1.5.1 (no longer needed)
-Matplotlib   3.1.3
+* Python   3.7
+* Numpy   1.18.1
+* Sympy   1.5.1 (no longer needed)
+* Matplotlib   3.1.3
 
 You can use conda to install the developing environment (download at
 https://www.anaconda.com/distribution/).
@@ -67,8 +66,6 @@ Linux, macOS:  source activate matrixgroups
 
 and run python in the terminal window with the matrixgroups environment
 activated
-
-
 
 
 
