@@ -18,6 +18,7 @@ fig = plt.figure()
 ax = fig.add_subplot()
 ax.set_aspect("equal")
 
+
 ######### ######### ######### ######### ######### #########
 ###### generators of the group
 ######### ######### ######### ######### ######### #########
@@ -27,20 +28,58 @@ ax.set_aspect("equal")
 # coordinates, or change the fundamental triangle in the subsequent
 # section. You may also need to change the affine chart.
 
-R1=[[-1.,0.,0.],[1.,1.,0.],[3.,0.,1.]]
-R2=[[1.,1.,0.],[0,-1.,0.],[0.,1.,1.]]
-R3=[[1.,0.,1.],[0,1.,1.],[0.,0.,-1.]]
+######### ######### ######### ######### ######### #########
+##### EXAMPLE 1
+##### (3,3,6) triangle group
+######### ######### ######### ######### ######### #########
+#R1=[[-1.,0.,0.],[1.,1.,0.],[3.,0.,1.]]
+#R2=[[1.,1.,0.],[0,-1.,0.],[0.,1.,1.]]
+#R3=[[1.,0.,1.],[0,1.,1.],[0.,0.,-1.]]
+#
+#generators=[R1,R2,R3]
 
-generators=[R1,R2,R3]
+#file_name=3_3_6_tri_grp
 
-# beware of floating point when building your generators
+######### ######### ######### ######### ######### #########
+##### EXAMPLE 2
+##### 1- parameter family of (2,3,infty) triangle group
+######### ######### ######### ######### ######### #########
+
+## choose parameter r>1
+## beware floating point!
+
+#r=1.5
+#
+#R0=[[-1.,0.,0.],[0.,1.,0.],[2*r,0.,1.]]
+#R1=[[1.,0.,0.],[0,-1.,0.],[0.,2.,1.]]
+#R2=[[1.,0.,2.],[0,1.,.5],[0.,0.,-1.]]
+# 
+#generators=[R0,R1,R2]
+#
+#my_file_name = '2_3_infty_tri_grp'
+
+######### ######### ######### ######### ######### #########
+##### EXAMPLE 3
+##### 1- parameter family of (2,3,5) triangle group
+######### ######### ######### ######### ######### #########
+
+r=1 # free parameter, must be positive
+c=.65450849718 # cos(pi/5)^2 # must be fixed for this example
+#
+R0=[[-1.,0.,0.],[0.,1.,0.],[2*c,0.,1.]]
+R1=[[1.,0.,0.],[0,-1.,0.],[0.,r/2.,1.]]
+R2=[[1.,0.,2.],[0,1.,2*r],[0.,0.,-1.]]
+# 
+generators=[R0,R1,R2]
+#
+my_file_name = '2_3_5_tri_grp'
 
 ######### ######### ######### ######### ######### #########
 ###### choice of fundamental triangle
 ######### ######### ######### ######### ######### #########
 
-# the triangle used to generate the tiling has vertices E1, E2, E3. Change
-# the vectors below to change the fundamental triangle.
+# the default triangle used to generate the tiling has vertices e1, e2, e3.
+# change the vectors below to change the fundamental triangle.
 
 e1=[1,0,0]
 e2=[0,1,0]
@@ -81,28 +120,29 @@ M=[[1,0,-1],[0,-1.73205081,0]]
 ###### generate the group and write to a text file
 ######### ######### ######### ######### ######### #########
 
-n=15
+#n=1
 
-# write csv which will be called '3_3_6_tri_grpn.csv' with all group
+# write csv which will be called 'my_file_namen.csv' with all group
 # elements that can be written as a product of exactly n generators:
 
-#write_group_elts(n,generators,'3_3_6_tri_grp')
+#write_group_elts(n,generators,my_file_name)
 
 # write n many csv files, each containing all group elements that can be
 # written as a product of exactly k generators from k up to 7
 
-#write_group_elts_multi_list(n,generators,'3_3_6_tri_grp')
+#write_group_elts_multi_list(n,generators,'my_file_name')
 
 ######### ######### ######### ######### ######### #########
 ###### create tiling from a text file
 ######### ######### ######### ######### ######### #########
 
-n=15
+#
+#if n<10:
+#    colored_tiling_of_csv(my_file_name+'0'+str(n),fundamental_tri, v0,M)
+#else:
+#    colored_tiling_of_csv(my_file_name+str(n),fundamental_tri, v0,M)
 
-if n<10:
-    colored_tiling_of_csv('3_3_6_tri_grp'+'0'+str(n),fundamental_tri, v0,M)
-else:
-    colored_tiling_of_csv('3_3_6_tri_grp'+str(n),fundamental_tri, v0,M)
+colored_tiling([R0,R1,R2],fundamental_tri,v0,M)
 
 
 ######### ######### ######### ######### ######### #########
@@ -112,3 +152,7 @@ else:
 # comment this if you are not planning to create a figure
 
 plt.show()
+
+#print(pow(mp([R0,R1]),2))
+#print(proj(mp([R1,e2]),v0,M))
+
