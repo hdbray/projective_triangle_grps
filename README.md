@@ -17,7 +17,7 @@ example groups are set at the beginning, then the fundamental domain,
 affine charts and projections are chosen. The script calls functions from
 other scripts to create the tilings. 
 
-The script generatematrices.py contains functions which, given a list of
+The script ``generatematrices.py`` contains functions which, given a list of
 generating matrices and a length n, will generate all matrices which can be
 written as a product of exactly n generators (allowing a generator to be
 chosen multiple times) and removes duplicates. 
@@ -27,7 +27,7 @@ write the group elements to a csv file, and functions which write n many
 csv files (for k between 1 and n, generates the csv for matrices which can
 be written as a product of exactly k generators). 
 
-The script triangle_grps.py contains functions which read csv files or take
+The script ``triangle_grps.py`` contains functions which read csv files or take
 in lists and draw tilings. These functions depend on the choice of
 fundamental domain, affine chart, and projection. 
 
