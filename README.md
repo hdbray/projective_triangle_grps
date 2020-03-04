@@ -24,7 +24,7 @@ chosen multiple times) and removes duplicates.
 
 In addition to a function which writes to a list, there is a function to
 write the group elements to a csv file, and functions which write n many
-csv files (for k between 1 and n, generates the csv for matrices which can
+csv files (for k from 1 to n, generates the csv for matrices which can
 be written as a product of exactly k generators). 
 
 The script ``triangle_grps.py`` contains functions which read csv files or take
@@ -33,13 +33,7 @@ fundamental domain, affine chart, and projection.
 
 ### Install
 
-The developing environment is saved as 
-
-```
-matrixgroups.yml
-```
-
-and includes:
+The developing environment is saved as `` matrixgroups.yml `` and includes:
 
 * Python   3.7
 * Numpy   1.18.1
@@ -51,7 +45,7 @@ https://www.anaconda.com/distribution/).
 
 You will need to set the path to use the command conda in terminal.
 
-Then, download the matrixgroups.yml file to access the developing environment. In terminal, enter the following to create a new environment from this file:
+Then, download the ``matrixgroups.yml`` file to access the developing environment. In terminal, enter the following to create a new environment from this file:
 
 ```
 conda env create -f matrixgroups.yml
