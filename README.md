@@ -31,9 +31,17 @@ The script ``triangle_grps.py`` contains functions which read csv files or take
 in lists and draw tilings. These functions depend on the choice of
 fundamental domain, affine chart, and projection. 
 
-### Install
+### Python set-up
 
-The developing environment is saved as `` matrixgroups.yml `` and includes:
+This software uses Python 3.7. The packages are listed in the text file
+``matrixgroups_packages.txt`` and can be installed with
+
+```
+pip install matrixgroups_packages.txt
+```
+
+Alternatively,  conda environment is saved as `` matrixgroups.yml `` and
+includes:
 
 * Python   3.7
 * Numpy   1.18.1
@@ -41,24 +49,24 @@ The developing environment is saved as `` matrixgroups.yml `` and includes:
 * Matplotlib   3.1.3
 
 You can use conda to install the developing environment (download at
-https://www.anaconda.com/distribution/).
+https://www.anaconda.com/distribution/ and make sure to set the path to
+use the command conda).
 
-You will need to set the path to use the command conda in terminal.
-
-Then, download the ``matrixgroups.yml`` file to access the developing environment. In terminal, enter the following to create a new environment from this file:
+Then, enter the following to create a new environment from the matrixgroups
+yaml:
 
 ```
 conda env create -f matrixgroups.yml
 ```
 
-Then activate the environment in the terminal:
+To activate the environment in the terminal:
 
 ```
 Windows:   activate matrixgroups
 Linux, macOS:  source activate matrixgroups
 ```
 
-and run python in the terminal window with the matrixgroups environment
+Finally, run python in the terminal window with the matrixgroups environment
 activated
 
 
