@@ -5,19 +5,31 @@ import matplotlib.pyplot as plt
 from generate_matrices import *
 from triangle_grp import *
 
-# make sure you have set up the anaconda environment 'matrixgroups' as
-# instructed in the readme before running this code
+# make sure you have installed 
+# * Python   3.7 * Numpy   1.18.1 * Matplotlib   3.1.3
+# before running this code. if you use anaconda, you can set up the
+# environment 'matrixgroups' as  instructed in the readme 
+
 
 ######### ######### ######### ######### ######### #########
-###### parameters for figures
+###### centering affine chart at the vector v0
 ######### ######### ######### ######### ######### #########
 
-# only comment these if you are not planning to create a figure
+# the affine chart will be parallel to the orthogonal complement of v0; it
+# will be the set of solutions to the system v0 dot x = 1. Change v0 to
+# change the affine chart (you will likely have to do this if you choose a
+# different fundamental triangle)
 
-fig = plt.figure()
-ax = fig.add_subplot()
-ax.set_aspect("equal")
+v0=[1,1,1]
 
+######### ######### ######### ######### ######### #########
+###### project from R^3 to R^2 with the matrix M
+######### ######### ######### ######### ######### #########
+
+M=[[1,0,-1],[0,-1.73205081,0]]
+
+# this linear transformation will map e1 to e1, e2 to -sqrt(3)e2, and e3 to
+# -e1
 
 ######### ######### ######### ######### ######### #########
 ###### generators of the group
@@ -47,6 +59,7 @@ ax.set_aspect("equal")
 
 ## choose parameter r>1
 ## beware floating point!
+## there is surely a better way to deal with the floating point issues
 
 #r=1.5
 #
@@ -63,6 +76,9 @@ ax.set_aspect("equal")
 ##### 1- parameter family of (2,3,5) triangle group
 ######### ######### ######### ######### ######### #########
 
+v0=[1,-1,-3] #this one is strange
+M=[[0,2,1],[0,0,-1]]
+
 r=1 # free parameter, must be positive
 c=.65450849718 # cos(pi/5)^2 # must be fixed for this example
 #
@@ -74,47 +90,36 @@ generators=[R0,R1,R2]
 #
 my_file_name = '2_3_5_tri_grp'
 
+#print([-1/(2*c-1),0,2*c/(2*c-1)])
+#print(mp([M,[-1/(2*c-1),0,2*c/(2*c-1)]]))
+#print([0,-1/(-1+r/2),r/(2*(-1+r/2))])
+#print(mp([M,[0,-1/(-1+r/2),r/(2*(-1+r/2))]]))
+#print([2/(2+2*r-1),2*r/(2+2*r-1),-1/(2+2*r-1)])
+#print(mp([M,[2/(2+2*r-1),2*r/(2+2*r-1),-1/(2+2*r-1)]]))
+
 ######### ######### ######### ######### ######### #########
 ###### choice of fundamental triangle
 ######### ######### ######### ######### ######### #########
 
-# the default triangle used to generate the tiling has vertices e1, e2, e3.
+# the default triangle used to generate the tiling has vertices e0, e1, e2.
 # change the vectors below to change the fundamental triangle.
 
-e1=[1,0,0]
-e2=[0,1,0]
-e3=[0,0,1]
-fundamental_tri=[e1,e2,e3]
+e0=[1,0,0]
+e1=[0,1,0]
+e2=[0,0,1]
+fundamental_tri=[e0,e1,e2]
 
 ######### ######### ######### ######### ######### #########
-###### centering affine chart at the vector v0
+###### create tiling from list
 ######### ######### ######### ######### ######### #########
 
-# the affine chart will be parallel to the orthogonal complement of v0; it
-# will be the set of solutions to the system v0 dot x = 1. Change v0 to
-# change the affine chart (you will likely have to do this if you choose a
-# different fundamental triangle)
+n=1
+list_of_matrices=group_elts(n,generators)
+colored_tiling(list_of_matrices,fundamental_tri, v0, M)
+#colored_tiling([R1],fundamental_tri, v0, M)
+#colored_tiling([R1,np.identity(3)],fundamental_tri, v0, M)
 
-v0=[1,1,1]
-
-######### ######### ######### ######### ######### #########
-###### project from R^3 to R^2 with the matrix M
-######### ######### ######### ######### ######### #########
-
-M=[[1,0,-1],[0,-1.73205081,0]]
-
-# this linear transformation will map e1 to e1, e2 to -sqrt(3)e2, and e3 to
-# -e1
-
-######### ######### ######### ######### ######### #########
-###### generate group and create tiling
-######### ######### ######### ######### ######### #########
-
-#
-#list_of_matrices=group_elts(15,generators)
-#colored_tiling(list_of_matrices,fundamental_tri, v0, M)
-#
-#plt.show()
+#print(proj(mp([R1,e1]),v0,M))
 
 ######### ######### ######### ######### ######### #########
 ###### generate the group and write to a text file
@@ -142,17 +147,9 @@ M=[[1,0,-1],[0,-1.73205081,0]]
 #else:
 #    colored_tiling_of_csv(my_file_name+str(n),fundamental_tri, v0,M)
 
-colored_tiling([R0,R1,R2],fundamental_tri,v0,M)
+#colored_tiling([R0,R1,R2],fundamental_tri,v0,M)
 
 
-######### ######### ######### ######### ######### #########
-###### show figure
-######### ######### ######### ######### ######### #########
+#colored_tiling_of_csv('2_3_5_tri_grp01', fundamental_tri,v0,M)
 
-# comment this if you are not planning to create a figure
-
-plt.show()
-
-#print(pow(mp([R0,R1]),2))
-#print(proj(mp([R1,e2]),v0,M))
 

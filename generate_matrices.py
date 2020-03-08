@@ -43,7 +43,7 @@ def group_elts(n,genset):
         for k in with_duplicate_matrices[j+1]:
             if k not in list_these_matrices[j+1]:
                 list_these_matrices[j+1].append(k)
-    return list_these_matrices[len(list_these_matrices)-1]
+    return list_these_matrices[-1]#[len(list_these_matrices)-1]
 
 
 
