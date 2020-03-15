@@ -44,21 +44,23 @@ def lines_tiling(matrices,fund_tri,affine_center,proj_matrix):
             draw_lines([proj(np.dot(A,E0),affine_center,proj_matrix),proj(np.dot(A,E1),affine_center,proj_matrix),proj(np.dot(A,E2),affine_center,proj_matrix),proj(np.dot(A,E0),affine_center,proj_matrix)])
     plt.show()
 
-def colored_tiling(matrices,fund_tri,affine_center,proj_matrix):
+def colored_tiling(matrices,fund_tri,affine_center,proj_matrix,choose_color='b',include_pltshow=True):
 #   matrices is a list of 3x3 matrices, stored as lists of lists
 #   draws the projection of the orbit of the filled fundamental triangle
 #   under the listed matrices
-    fig = plt.figure()
-    ax = fig.add_subplot()
-    ax.set_aspect("equal")
+    if include_pltshow==True:
+        fig = plt.figure()
+        ax = fig.add_subplot()
+        ax.set_aspect("equal")
     E0=fund_tri[0]
     E1=fund_tri[1]
     E2=fund_tri[2]
     for A in matrices:
         x_coordinates=[proj(np.dot(A,E0),affine_center,proj_matrix)[0],proj(np.dot(A,E1),affine_center,proj_matrix)[0],proj(np.dot(A,E2),affine_center,proj_matrix)[0],proj(np.dot(A,E0),affine_center,proj_matrix)[0]]
         y_coordinates=[proj(np.dot(A,E0),affine_center,proj_matrix)[1],proj(np.dot(A,E1),affine_center,proj_matrix)[1],proj(np.dot(A,E2),affine_center,proj_matrix)[1],proj(np.dot(A,E0),affine_center,proj_matrix)[1]]
-        plt.fill(x_coordinates, y_coordinates, "b")
-    plt.show()
+        plt.fill(x_coordinates, y_coordinates, choose_color)
+    if include_pltshow==True:
+        plt.show()
 
 def colored_tiling_of_csv(csv_file,fund_tri,affine_center,proj_matrix,save_fig=True):
 #   input is the name of a csv file as a string

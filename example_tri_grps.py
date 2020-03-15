@@ -76,7 +76,7 @@ M=[[1,0,-1],[0,-1.73205081,0]]
 ##### 1- parameter family of (2,3,5) triangle group
 ######### ######### ######### ######### ######### #########
 
-v0=[1,-1,-3] #this one is strange
+v0=[1,1,1] #this one is strange
 M=[[0,2,1],[0,0,-1]]
 
 r=1 # free parameter, must be positive
@@ -116,6 +116,7 @@ fundamental_tri=[e0,e1,e2]
 n=1
 list_of_matrices=group_elts(n,generators)
 colored_tiling(list_of_matrices,fundamental_tri, v0, M)
+
 #colored_tiling([R1],fundamental_tri, v0, M)
 #colored_tiling([R1,np.identity(3)],fundamental_tri, v0, M)
 
@@ -133,7 +134,7 @@ colored_tiling(list_of_matrices,fundamental_tri, v0, M)
 #write_group_elts(n,generators,my_file_name)
 
 # write n many csv files, each containing all group elements that can be
-# written as a product of exactly k generators from k up to 7
+# written as a product of exactly k generators from k up to n
 
 #write_group_elts_multi_list(n,generators,'my_file_name')
 
