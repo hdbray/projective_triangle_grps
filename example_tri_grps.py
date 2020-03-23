@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 from generate_matrices import *
 from triangle_grp import *
 
+import random as r
+
 # make sure you have installed 
 # * Python   3.7 * Numpy   1.18.1 * Matplotlib   3.1.3
 # before running this code. if you use anaconda, you can set up the
@@ -76,8 +78,27 @@ M=[[1,0,-1],[0,-1.73205081,0]]
 ##### 1- parameter family of (2,3,5) triangle group
 ######### ######### ######### ######### ######### #########
 
-v0=[1,1,1] #this one is strange
-M=[[0,2,1],[0,0,-1]]
+k=5
+a00=r.uniform(-k,k)
+a01=r.uniform(-k,k)
+a02=r.uniform(-k,k)
+#a10=r.uniform(-k,k)
+#a11=r.uniform(-k,k)
+#a12=r.uniform(-k,k)
+#
+#M=[[a00,a01,a02],[a10,a11,a12]]
+
+
+v0=[-3,-1,1]
+#v0=[a00,a01,a02]
+#v0=[1,1,1] #this one is strange
+
+print(v0)
+
+S=[[v0[0],0,0],[0,v0[1],0],[0,0,v0[2]]]
+#S=np.identity(3)
+#M=[[0,2,1],[0,0,-1]]
+M=np.dot([[1,0,-1],[0,-1.73205081,0]],S)
 
 r=1 # free parameter, must be positive
 c=.65450849718 # cos(pi/5)^2 # must be fixed for this example
